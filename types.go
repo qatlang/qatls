@@ -142,6 +142,15 @@ func (self Function) GetGenericArgument(name string) *GenericArgument {
 	return nil
 }
 
+type GenericAbstractParameter struct {
+	Kind         string      `json:"genericKind"`
+	Index        json.Number `json:"index"`
+	Name         string      `json:"name"`
+	HasDefault   bool        `json:"hasDefault"`
+	DefaultValue *string     `json:"defaultValueString,omitempty"`
+	Range        FileRange   `json:"range"`
+}
+
 type TypeField struct {
 	Type Type
 	Name string
