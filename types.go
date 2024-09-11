@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"os"
 
 	protocol "github.com/tliron/glsp/protocol_3_16"
@@ -51,3 +52,14 @@ func (self FileRange) IsWithin(pathVal string, pos Position) bool {
 func (self FileRange) IsRightAfter(pathVal string, pos Position) bool {
 	return self.IsSamePathAs(pathVal) && (self.End.Line == pos.Line) && ((self.End.Character + 1) == pos.Character)
 }
+
+// CODE INFO TYPES
+
+type Visibility struct {
+	Nature    string `json:"nature"`
+	HasModule bool   `json:"hasModule"`
+	ModuleID  string `json:"moduleID"`
+	HasType   bool   `json:"hasType"`
+	TypeID    string `json:"typeID"`
+}
+
