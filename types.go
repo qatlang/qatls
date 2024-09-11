@@ -97,3 +97,18 @@ type LocalValue struct {
 	Mentions []FileRange `json:"mentions"`
 }
 
+type Function struct {
+	Info struct {
+		FullName        string       `json:"fullName"`
+		ID              string       `json:"functionID"`
+		ModuleID        string       `json:"moduleID"`
+		Visibility      Visibility   `json:"visibility"`
+		IsVariadic      bool         `json:"isVariadic"`
+		LocalValues     []LocalValue `json:"locals"`
+		DefinitionRange *FileRange   `json:"definitionRange,omitempty"`
+	} `json:"info"`
+	Range           FileRange        `json:"origin"`
+	Mentions        []FileRange      `json:"mentions"`
+	BroughtMentions []BroughtMention `json:"broughtMentions"`
+}
+
