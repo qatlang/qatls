@@ -84,3 +84,16 @@ type Mod struct {
 	Mentions        []FileRange      `json:"mentions"`
 	BroughtMentions []BroughtMention `json:"broughtMentions"`
 }
+
+type LocalValue struct {
+	Info struct {
+		Name       string `json:"name"`
+		TypeID     string `json:"typeID"`
+		TypeName   string `json:"type"`
+		IsVariable bool   `json:"isVariable"`
+		FunctionID string `json:"functionID"`
+	} `json:"info"`
+	Range    FileRange   `json:"origin"`
+	Mentions []FileRange `json:"mentions"`
+}
+
