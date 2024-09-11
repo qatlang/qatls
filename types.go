@@ -97,11 +97,18 @@ type LocalValue struct {
 	Mentions []FileRange `json:"mentions"`
 }
 
+type Argument struct {
+	TypeID string  `json:"typeID"`
+	Name   *string `json:"name,omitempty"`
+	IsVar  bool    `json:"isVar"`
+}
+
 type Function struct {
 	Info struct {
 		Name            string            `json:"name"`
 		FullName        string            `json:"fullName"`
 		ID              string            `json:"functionID"`
+		Arguments       []Argument        `json:"arguments"`
 		GenericArgs     []GenericArgument `json:"genericArguments"`
 		ModuleID        string            `json:"moduleID"`
 		Visibility      Visibility        `json:"visibility"`
