@@ -63,3 +63,8 @@ type Visibility struct {
 	TypeID    string `json:"typeID"`
 }
 
+type BroughtMention struct {
+	ModuleID string    `json:"module"`
+	Range    FileRange `json:"range"`
+}
+
