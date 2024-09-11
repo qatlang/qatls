@@ -99,17 +99,47 @@ type LocalValue struct {
 
 type Function struct {
 	Info struct {
-		FullName        string       `json:"fullName"`
-		ID              string       `json:"functionID"`
-		ModuleID        string       `json:"moduleID"`
-		Visibility      Visibility   `json:"visibility"`
-		IsVariadic      bool         `json:"isVariadic"`
-		LocalValues     []LocalValue `json:"locals"`
-		DefinitionRange *FileRange   `json:"definitionRange,omitempty"`
+		Name            string            `json:"name"`
+		FullName        string            `json:"fullName"`
+		ID              string            `json:"functionID"`
+		GenericArgs     []GenericArgument `json:"genericArguments"`
+		ModuleID        string            `json:"moduleID"`
+		Visibility      Visibility        `json:"visibility"`
+		IsVariadic      bool              `json:"isVariadic"`
+		LocalValues     []LocalValue      `json:"locals"`
+		DefinitionRange *FileRange        `json:"definitionRange,omitempty"`
 	} `json:"info"`
 	Range           FileRange        `json:"origin"`
 	Mentions        []FileRange      `json:"mentions"`
 	BroughtMentions []BroughtMention `json:"broughtMentions"`
+}
+
+// Function - GenericEntity interface
+
+func (self Function) IsGeneric() bool {
+	return len(self.Info.GenericArgs) != 0
+}
+
+func (self Function) GenericArgumentCount() int {
+	return len(self.Info.GenericArgs)
+}
+
+func (self Function) HasGenericArgument(name string) bool {
+	for _, arg := range self.Info.GenericArgs {
+		if arg.Name == name {
+			return true
+		}
+	}
+	return false
+}
+
+func (self Function) GetGenericArgument(name string) *GenericArgument {
+	for _, arg := range self.Info.GenericArgs {
+		if arg.Name == name {
+			return &arg
+		}
+	}
+	return nil
 }
 
 type TypeField struct {
