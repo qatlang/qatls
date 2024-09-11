@@ -68,3 +68,19 @@ type BroughtMention struct {
 	Range    FileRange `json:"range"`
 }
 
+type Mod struct {
+	Info struct {
+		ID                        string        `json:"moduleID"`
+		FullName                  string        `json:"fullName"`
+		IsFilesystemLib           bool          `json:"isFilesystemLib"`
+		ModuleType                string        `json:"moduleType"`
+		Visibility                Visibility    `json:"visibility"`
+		HasModuleInitialiser      bool          `json:"hasModuleInitialiser"`
+		IntegerBitwidths          []json.Number `json:"integerBitwidths"`
+		UnsignedBitwidths         []json.Number `json:"unsignedBitwidths"`
+		FilesystemBroughtMentions []FileRange   `json:"filesystemBroughtMentions"`
+	} `json:"info"`
+	Range           FileRange        `json:"origin"`
+	Mentions        []FileRange      `json:"mentions"`
+	BroughtMentions []BroughtMention `json:"broughtMentions"`
+}
