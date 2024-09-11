@@ -112,3 +112,35 @@ type Function struct {
 	BroughtMentions []BroughtMention `json:"broughtMentions"`
 }
 
+type Type interface {
+	GetID() string
+	GetFullName() string
+
+	IsTriviallyCopyable() bool
+	IsTriviallyMovable() bool
+	IsCopyConstructible() bool
+	IsCopyAssignable() bool
+	IsMoveConstructible() bool
+	IsMoveAssignable() bool
+
+	HasFields() bool
+	GetFields() []TypeField
+
+	HasStaticFields() bool
+	GetStaticFields() []TypeStaticField
+
+	HasMethods() bool
+	GetMethods() []MethodSignature
+
+	HasStaticMethods() bool
+	GetStaticMethods() []FunctionSignature
+}
+
+type GenericEntity interface {
+	IsGeneric() bool
+	GenericArgumentCount() uint32
+	HasGenericArgument(name string) bool
+	GetGenericArgument(name string) *GenericArgument
+}
+
+var allTypes map[string]Type
