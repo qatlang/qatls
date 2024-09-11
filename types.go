@@ -156,6 +156,18 @@ type GenericFunction struct {
 	BroughtMentions []BroughtMention `json:"broughtMentions"`
 }
 
+type StructField struct {
+	Info struct {
+		Name       string     `json:"name"`
+		TypeID     string     `json:"typeID"`
+		TypeName   string     `json:"type"`
+		IsVar      bool       `json:"isVariable"`
+		Visibility Visibility `json:"visibility"`
+	} `json:"info"`
+	Range    FileRange   `json:"origin"`
+	Mentions []FileRange `json:"mentions"`
+}
+
 type GenericAbstractParameter struct {
 	Kind         string      `json:"genericKind"`
 	Index        json.Number `json:"index"`
