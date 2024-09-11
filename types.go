@@ -142,6 +142,20 @@ func (self Function) GetGenericArgument(name string) *GenericArgument {
 	return nil
 }
 
+type GenericFunction struct {
+	Info struct {
+		Name              string                     `json:"name"`
+		FullName          string                     `json:"fullName"`
+		ID                string                     `json:"functionID"`
+		GenericParameters []GenericAbstractParameter `json:"genericParameters"`
+		ModuleID          string                     `json:"moduleID"`
+		Visibility        Visibility                 `json:"visibility"`
+	} `json:"info"`
+	Range           FileRange        `json:"origin"`
+	Mentions        []FileRange      `json:"mentions"`
+	BroughtMentions []BroughtMention `json:"broughtMentions"`
+}
+
 type GenericAbstractParameter struct {
 	Kind         string      `json:"genericKind"`
 	Index        json.Number `json:"index"`
