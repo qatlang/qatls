@@ -112,6 +112,16 @@ type Function struct {
 	BroughtMentions []BroughtMention `json:"broughtMentions"`
 }
 
+type TypeField struct {
+	Type Type
+	Name string
+}
+
+type TypeStaticField struct {
+	Type Type
+	Name string
+}
+
 type Type interface {
 	GetID() string
 	GetFullName() string
