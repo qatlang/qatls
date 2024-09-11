@@ -1,3 +1,6 @@
 *~
 go.sum
 .vscode
+build.sh
+qatls
+*.json
