@@ -168,6 +168,22 @@ type StructField struct {
 	Mentions []FileRange `json:"mentions"`
 }
 
+type StaticField struct {
+	Info struct {
+		ParentID   string     `json:"parentID"`
+		TypeID     string     `json:"typeID"`
+		TypeName   string     `json:"type"`
+		Name       string     `json:"name"`
+		FullName   string     `json:"fullName"`
+		Visibility Visibility `json:"visibility"`
+		IsVar      bool       `json:"isVariable"`
+		ModuleID   string     `json:"moduleID"`
+	} `json:"info"`
+	Range           FileRange        `json:"origin"`
+	Mentions        []FileRange      `json:"mentions"`
+	BroughtMentions []BroughtMention `json:"broughtMentions"`
+}
+
 type GenericAbstractParameter struct {
 	Kind         string      `json:"genericKind"`
 	Index        json.Number `json:"index"`
